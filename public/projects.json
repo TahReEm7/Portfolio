@@ -2,28 +2,75 @@
   {
     "id": "recipe-book",
     "title": "Recipe Book",
-    "description": "A full-stack recipe sharing app with authentication, image upload, and dashboard analytics.",
-    "tech": ["React", "Tailwind", "MongoDB", "Express", "Firebase"],
+    "brief": "Full-stack recipe sharing platform with rich user interaction and analytics.",
+    "description": "Recipe Book is a scalable full-stack web application allowing users to share, search, and manage recipes with authentication, image uploads, and an analytics dashboard to monitor user engagement.",
+    "challenges": [
+      "Implementing secure user authentication and authorization.",
+      "Building an efficient image upload and storage system with previews.",
+      "Designing a responsive and intuitive dashboard with live analytics.",
+      "Optimizing search and filtering for fast performance on large datasets."
+    ],
+    "features": [
+      "User registration, login, and profile management.",
+      "Recipe submission with rich text and image uploads.",
+      "Advanced search and filtering by category, cuisine, and ingredients.",
+      "Dashboard with real-time analytics and user engagement stats.",
+      "Mobile responsive design with intuitive navigation."
+    ],
+    "tech": ["React","React Router", "MongoDB", "Express.js","NodeJs","Firebase", "Tailwind CSS"],
+    "role": "Full Stack Developer",
+    "duration": "7 Days",
     "live": "https://recipebook-tahreem.web.app/",
     "code": "https://github.com/TahReEm7/recipe-book",
-    "image": "https://i.ibb.co/vB6Mg3y/recipe-book.jpg"
+    "image": "https://i.ibb.co/hxfmv5tp/Screenshot-2025-06-28-025725.png"
+  },
+    {
+    "id": "billease",
+    "title": "BillEase",
+    "brief": "Expense tracker app with Firebase auth and smart bill management.",
+    "description": "BillEase helps users effortlessly track and manage their expenses with a clean interface, smart categorization, and secure Firebase authentication.",
+    "challenges": [
+      "Implementing secure and fast user authentication with Firebase.",
+      "Designing an intuitive UI that simplifies bill tracking.",
+      "Managing state and data syncing in real-time with Firebase.",
+      "Creating insightful dashboard charts and statistics."
+    ],
+    "features": [
+      "Firebase authentication for secure user login and registration.",
+      "Add, edit, delete, and categorize expenses.",
+      "Dashboard displaying expense trends and stats with charts.",
+      "Responsive design with smooth animations."
+    ],
+    "tech": ["React","React Router", "Firebase", "Tailwind CSS"],
+    "role": "Frontend Developer",
+    "duration": "6 Days",
+    "live": "https://billease_tahreem.surge.sh/",
+    "code": "https://github.com/TahReEm7/bill-ease",
+    "image": "https://i.ibb.co/nMXDpKBK/Screenshot-2025-06-28-030116.png"
   },
   {
     "id": "english-shikho",
     "title": "English Shikho",
-    "description": "An English learning platform with text-to-voice and interactive content.",
-    "tech": ["HTML", "Tailwind", "JavaScript"],
+    "brief": "Interactive English learning platform with text-to-speech and quizzes.",
+    "description": "English Shikho is a beginner-friendly platform designed to help learners improve English language skills through interactive lessons, quizzes, and dynamic text-to-speech features.",
+    "challenges": [
+      "Integrating reliable text-to-speech functionality across browsers.",
+      "Creating a clean UI that caters to learners of varying ages.",
+      "Managing dynamic content rendering for lessons and quizzes.",
+      "Ensuring smooth performance on low-end devices."
+    ],
+    "features": [
+      "Interactive lessons with embedded text-to-voice support.",
+      "Progress tracking through quizzes and interactive exercises.",
+      "Simple, distraction-free UI optimized for mobile and desktop.",
+      "Content easily expandable for future lessons."
+    ],
+    "tech": ["HTML", "Tailwind CSS", "JavaScript"],
+    "role": "Frontend Developer",
+    "duration": "2 months",
     "live": "https://english-shikho.surge.sh/",
     "code": "https://github.com/TahReEm7/english-shikho",
-    "image": "https://i.ibb.co/7gj4ZdG/english-shikho.jpg"
-  },
-  {
-    "id": "billease",
-    "title": "BillEase",
-    "description": "Expense tracking app with Firebase auth, smart bills, and smooth UI.",
-    "tech": ["React", "Firebase", "Tailwind"],
-    "live": "https://billease_tahreem.surge.sh/",
-    "code": "https://github.com/TahReEm7/bill-ease",
-    "image": "https://i.ibb.co/Q98gS91/bill-ease.jpg"
+    "image": "https://i.ibb.co/v4hqD0Km/Screenshot-2025-06-28-025914.png"
   }
+
 ]

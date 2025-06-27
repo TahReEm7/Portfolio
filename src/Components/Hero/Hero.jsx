@@ -75,9 +75,9 @@ const Hero = () => {
           transition={{ duration: 1 }}
         >
           <img
-            src="https://i.ibb.co/Y0zYq1R/profile-pic.png"
+            src="https://www.altamira.ai/wp-content/uploads/2019/09/Full-Stack-DeveloperArtboard-1.png"
             alt="Tahreem Hossain"
-            className="w-64 h-64 md:w-80 md:h-80 rounded-full shadow-2xl object-cover border-4 border-primary"
+             className=" hover:scale-105 transition-transform rounded-xl"
           />
         </motion.div>
       </div>

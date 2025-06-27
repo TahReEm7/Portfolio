@@ -20,7 +20,7 @@ const Navbar = () => {
 
   useEffect(() => {
     if (location.pathname === "/") {
-      const sections = ["home", "about", "contact"];
+      const sections = ["home", "about","skills","contact"];
 
       const handleScroll = () => {
         const scrollPosition = window.scrollY + 60;
@@ -94,6 +94,17 @@ const Navbar = () => {
               className={linkClass("about")}
             >
               About
+            </HashLink>
+
+              {/* skills */}
+            <HashLink
+              smooth
+              to="/#skills"
+              scroll={scrollWithOffset}
+              onClick={() => setActiveSection("skills")}
+              className={linkClass("skills")}
+            >
+              Skills
             </HashLink>
 
             {/* Projects */}
@@ -194,7 +205,17 @@ const Navbar = () => {
               About
             </HashLink>
           </li>
-
+              <li>
+                <HashLink
+              smooth
+              to="/#skills"
+              scroll={scrollWithOffset}
+              onClick={() => setActiveSection("skills")}
+              className={linkClass("skills")}
+            >
+              Skills
+            </HashLink>
+              </li>
           <li>
             <NavLink
               to="/projects"
