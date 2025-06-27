@@ -3,7 +3,7 @@ import ThemeToggle from '../../Context/ThemeContext';
 
 const Navbar = () => {
   return (
-    <div className="drawer sticky z-50 w-full bg-base-300 shadow-md">
+    <div className="drawer sticky top-0 z-50 w-full bg-base-300 shadow-md">
       <input id="nav-drawer" type="checkbox" className="drawer-toggle" />
 
       <div className="drawer-content w-full">
