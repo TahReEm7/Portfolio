@@ -2,7 +2,3 @@
 @plugin "daisyui";
 @tailwind utilities;
 
-a.active{
-    color: blue;
-    text-decoration: underline;
-}

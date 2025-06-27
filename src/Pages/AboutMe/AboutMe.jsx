@@ -12,7 +12,7 @@ const AboutMe = () => {
         className="max-w-5xl mx-auto text-center"
       >
         <h2 className="text-4xl md:text-5xl font-extrabold text-primary mb-6">
-          About Me
+         👨‍💻 About Me
         </h2>
         <p className="text-lg md:text-xl text-base-content max-w-3xl mx-auto leading-relaxed mb-10">
           I'm <span className="text-secondary font-semibold">Tahreem Hossain</span>, a 
