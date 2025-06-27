@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import { HashLink } from "react-router-hash-link";
 import ThemeToggle from "../../Context/ThemeContext";
 
@@ -14,70 +14,78 @@ const scrollToTop = () => {
 };
 
 const Navbar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    const sections = ["home", "about", "contact"];
+    if (location.pathname === "/") {
+      const sections = ["home", "about", "contact"];
 
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 60; // 60 = navbar height + offset buffer
+      const handleScroll = () => {
+        const scrollPosition = window.scrollY + 60;
 
-      let current = "home"; // default
-      for (let i = 0; i < sections.length; i++) {
-        const section = document.getElementById(sections[i]);
-        if (section) {
-          if (scrollPosition >= section.offsetTop) {
+        let current = "home";
+        for (let i = 0; i < sections.length; i++) {
+          const section = document.getElementById(sections[i]);
+          if (section && scrollPosition >= section.offsetTop) {
             current = sections[i];
           }
         }
-      }
-      setActiveSection(current);
-    };
+        setActiveSection(current);
+      };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // initial check
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      handleScroll();
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      return () => window.removeEventListener("scroll", handleScroll);
+    } else {
+      setActiveSection(null);
+    }
+  }, [location]);
 
-  // Helper to add active classes
-  const linkClass = (section) =>
-    activeSection === section
+  const linkClass = (section) => {
+    if (location.pathname === "/projects") {
+      return "hover:text-primary transition cursor-pointer";
+    }
+    return activeSection === section
       ? "text-primary border-b-2 border-primary pb-1 cursor-pointer"
       : "hover:text-primary transition cursor-pointer";
+  };
 
   return (
     <div className="drawer sticky top-0 z-50 w-full bg-base-100/60 backdrop-blur-md shadow-md">
       <input id="nav-drawer" type="checkbox" className="drawer-toggle" />
 
-      {/* Main content */}
       <div className="drawer-content w-full">
         <div className="max-w-11/12 mx-auto flex justify-between items-center px-4 py-3 md:py-4">
           {/* Logo */}
-          <HashLink
-            to="/"
+          <span
             onClick={() => {
-              scrollToTop();
+              navigate("/");
               setActiveSection("home");
+              scrollToTop();
             }}
             className="text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary cursor-pointer"
           >
             Tahreem
-          </HashLink>
+          </span>
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8 text-base font-medium">
-            <HashLink
-              to="/"
-              scroll={scrollToTop}
-              onClick={() => setActiveSection("home")}
+            {/* Home */}
+            <span
+              onClick={() => {
+                navigate("/");
+                setActiveSection("home");
+                scrollToTop();
+              }}
               className={linkClass("home")}
             >
               Home
-            </HashLink>
+            </span>
 
+            {/* About */}
             <HashLink
               smooth
               to="/#about"
@@ -88,6 +96,7 @@ const Navbar = () => {
               About
             </HashLink>
 
+            {/* Projects */}
             <NavLink
               to="/projects"
               className={({ isActive }) =>
@@ -99,6 +108,7 @@ const Navbar = () => {
               Projects
             </NavLink>
 
+            {/* Contact */}
             <HashLink
               smooth
               to="/#contact"
@@ -112,7 +122,7 @@ const Navbar = () => {
             <ThemeToggle />
           </nav>
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu Button */}
           <label htmlFor="nav-drawer" className="md:hidden cursor-pointer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -132,22 +142,22 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Drawer menu */}
+      {/* Mobile Drawer Menu */}
       <div className="drawer-side z-50">
         <label htmlFor="nav-drawer" className="drawer-overlay"></label>
         <ul className="menu p-4 w-64 min-h-full bg-base-200 text-base-content space-y-2">
           <div className="flex justify-between items-center mb-4">
-            <HashLink
-              to="/"
+            <span
               onClick={() => {
-                scrollToTop();
+                navigate("/");
                 setActiveSection("home");
+                scrollToTop();
                 document.getElementById("nav-drawer").checked = false;
               }}
               className="text-xl font-bold text-primary cursor-pointer"
             >
               Tahreem.dev
-            </HashLink>
+            </span>
             <label
               htmlFor="nav-drawer"
               className="btn btn-sm btn-circle cursor-pointer"
@@ -157,18 +167,19 @@ const Navbar = () => {
           </div>
 
           <li>
-            <HashLink
-              to="/"
-              scroll={scrollToTop}
+            <span
               onClick={() => {
+                navigate("/");
                 setActiveSection("home");
+                scrollToTop();
                 document.getElementById("nav-drawer").checked = false;
               }}
               className="rounded hover:bg-base-300 cursor-pointer"
             >
               Home
-            </HashLink>
+            </span>
           </li>
+
           <li>
             <HashLink
               smooth
@@ -183,6 +194,7 @@ const Navbar = () => {
               About
             </HashLink>
           </li>
+
           <li>
             <NavLink
               to="/projects"
@@ -194,6 +206,7 @@ const Navbar = () => {
               Projects
             </NavLink>
           </li>
+
           <li>
             <HashLink
               smooth

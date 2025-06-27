@@ -32,7 +32,7 @@ const Education = () => {
         viewport={{ once: true }}
         className="text-center mb-12"
       >
-        <h2 className="text-4xl md:text-5xl font-extrabold text-primary mb-2">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
           Education 🎓
         </h2>
         <p className="text-base-content text-lg">My academic journey so far</p>

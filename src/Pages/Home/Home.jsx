@@ -1,8 +1,9 @@
 import React from 'react';
 import Hero from '../../Components/Hero/Hero';
 import AboutMe from '../AboutMe/AboutMe';
-import Education from '../../Components/Education/Education';
+import Education from '../Education/Education';
 import Contact from '../Contact/Contact';
+import { Toaster } from 'react-hot-toast';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <AboutMe></AboutMe>
             <Education></Education>
             <Contact></Contact>
+             <Toaster position="top-right" reverseOrder={false} />
         </div>
     );
 };

@@ -1,7 +1,13 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
+import { HashLink } from "react-router-hash-link";
 
+const scrollWithOffset = (el) => {
+  const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+  const yOffset = -50;
+  window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
+};
 const Hero = () => {
   return (
     <section className="w-11/12 mx-auto px-6 md:px-12 py-10 md:py-16 bg-base-100">
@@ -14,7 +20,7 @@ const Hero = () => {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-4 text-primary">
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
             Hi, I'm Tahreem Hossain 👋
           </h1>
 
@@ -50,12 +56,13 @@ const Hero = () => {
             </motion.div>
 
             <motion.div whileHover={{ scale: 1.05 }}>
-              <Link
-                to="/contact"
+              <HashLink
+                to="#contact"
+                scroll={scrollWithOffset}
                 className="btn btn-outline btn-lg px-8 rounded-full"
               >
                 📬 Contact Me
-              </Link>
+              </HashLink>
             </motion.div>
           </div>
         </motion.div>

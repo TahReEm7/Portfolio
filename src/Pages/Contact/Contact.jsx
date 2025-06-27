@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
 import { FaEnvelope, FaMapMarkerAlt, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Contact = () => {
@@ -11,7 +12,7 @@ const Contact = () => {
         viewport={{ once: true }}
         className="text-center mb-12"
       >
-        <h2 className="text-4xl md:text-5xl font-extrabold text-primary mb-2">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
           Contact Me 📬
         </h2>
         <p className="text-base-content text-lg">Let’s connect and build something awesome together!</p>
@@ -57,7 +58,7 @@ const Contact = () => {
           className="space-y-4"
           onSubmit={(e) => {
             e.preventDefault();
-            alert('Message sent! (connect to backend or Formspree)');
+           toast.error("Message not sent! This feature is currently under development.");
           }}
         >
           <input

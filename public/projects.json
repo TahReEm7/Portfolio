@@ -1,0 +1,29 @@
+[
+  {
+    "id": "recipe-book",
+    "title": "Recipe Book",
+    "description": "A full-stack recipe sharing app with authentication, image upload, and dashboard analytics.",
+    "tech": ["React", "Tailwind", "MongoDB", "Express", "Firebase"],
+    "live": "https://recipebook-tahreem.web.app/",
+    "code": "https://github.com/TahReEm7/recipe-book",
+    "image": "https://i.ibb.co/vB6Mg3y/recipe-book.jpg"
+  },
+  {
+    "id": "english-shikho",
+    "title": "English Shikho",
+    "description": "An English learning platform with text-to-voice and interactive content.",
+    "tech": ["HTML", "Tailwind", "JavaScript"],
+    "live": "https://english-shikho.surge.sh/",
+    "code": "https://github.com/TahReEm7/english-shikho",
+    "image": "https://i.ibb.co/7gj4ZdG/english-shikho.jpg"
+  },
+  {
+    "id": "billease",
+    "title": "BillEase",
+    "description": "Expense tracking app with Firebase auth, smart bills, and smooth UI.",
+    "tech": ["React", "Firebase", "Tailwind"],
+    "live": "https://billease_tahreem.surge.sh/",
+    "code": "https://github.com/TahReEm7/bill-ease",
+    "image": "https://i.ibb.co/Q98gS91/bill-ease.jpg"
+  }
+]

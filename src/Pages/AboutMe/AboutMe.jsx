@@ -11,7 +11,7 @@ const AboutMe = () => {
         viewport={{ once: true }}
         className="max-w-5xl mx-auto text-center"
       >
-        <h2 className="text-4xl md:text-5xl font-extrabold text-primary mb-6">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
          👨‍💻 About Me
         </h2>
         <p className="text-lg md:text-xl text-base-content max-w-3xl mx-auto leading-relaxed mb-10">
