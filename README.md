@@ -1,6 +1,6 @@
 # Personal Portfolio
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=flat-square&logo=surge)](https://tahreem17.surge.sh/)
+#Live Link : (https://img.shields.io/badge/Live-Demo-blue?style=flat-square&logo=surge)](https://tahreem17.surge.sh/)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 A sleek and modern personal portfolio website built with React and Tailwind CSS to showcase my projects, skills, and contact information.
@@ -45,12 +45,14 @@ This portfolio website is designed to provide a clean, responsive, and visually 
 - Framer Motion
 - React Helmet
 - React Router
+- Surge
+- Other necessary npm packages
 
 ---
 
 ## Screenshots
 
-![Portfolio Screenshot](https://i.ibb.co/nMXDpKBK/Screenshot-2025-06-28-030116.png)
+![Portfolio Screenshot](https://i.ibb.co/zT0c9d7m/Screenshot-2025-06-28-173202.png)
 
 ---
 
