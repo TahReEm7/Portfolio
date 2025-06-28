@@ -1,4 +1,37 @@
 [
+    {
+    "id": "circleup",
+    "title": "CircleUp",
+    "brief": "Social networking platform for community engagement and connections.",
+    "description": "CircleUp is a community-driven social networking application designed to foster connections, share updates, and organize events within local communities.",
+    "challenges": [
+      "Building a scalable backend to support real-time interactions.",
+      "Designing a user-friendly interface for seamless social engagement.",
+      "Implementing secure authentication and authorization.",
+      "Handling complex state management and data synchronization."
+    ],
+    "features": [
+      "User registration and authentication.",
+      "Posting, liking, and commenting on updates.",
+      "Event creation and management within communities.",
+      "Real-time notifications and updates.",
+      "Responsive design for mobile and desktop."
+    ],
+    "tech": [
+      "⚛️ React",
+      "🛣️ React Router",
+      "🍃 MongoDB",
+      "🚂 Express.js",
+      "🟢 NodeJs",
+      "🌬️ Tailwind CSS"
+    ],
+    "role": "Full Stack Developer",
+    "duration": "12 Days",
+    "live": "https://circleup-tahreem.surge.sh/",
+    "frontend": "https://github.com/TahReEm7/CircleUp-client",
+    "backend": "https://github.com/TahReEm7/CircleUp-Server",
+    "image": "https://i.ibb.co/pBhJ3J1p/Screenshot-2025-06-28-172349.png"
+  },
   {
     "id": "recipe-book",
     "title": "Recipe Book",
@@ -17,14 +50,23 @@
       "Dashboard with real-time analytics and user engagement stats.",
       "Mobile responsive design with intuitive navigation."
     ],
-    "tech": ["React","React Router", "MongoDB", "Express.js","NodeJs","Firebase", "Tailwind CSS"],
+    "tech": [
+      "⚛️ React",
+      "🛣️ React Router",
+      "🍃 MongoDB",
+      "🚂 Express.js",
+      "🟢 NodeJs",
+      "🔥 Firebase",
+      "🌬️ Tailwind CSS"
+    ],
     "role": "Full Stack Developer",
     "duration": "7 Days",
-    "live": "https://recipebook-tahreem.web.app/",
-    "code": "https://github.com/TahReEm7/recipe-book",
+    "live": "https://recipebooktahreem.surge.sh/",
+    "frontend": "https://github.com/TahReEm7/recipe-book-client",
+    "backend": "https://github.com/TahReEm7/recipe-book-server",
     "image": "https://i.ibb.co/hxfmv5tp/Screenshot-2025-06-28-025725.png"
   },
-    {
+  {
     "id": "billease",
     "title": "BillEase",
     "brief": "Expense tracker app with Firebase auth and smart bill management.",
@@ -41,11 +83,16 @@
       "Dashboard displaying expense trends and stats with charts.",
       "Responsive design with smooth animations."
     ],
-    "tech": ["React","React Router", "Firebase", "Tailwind CSS"],
+    "tech": [
+      "⚛️ React",
+      "🛣️ React Router",
+      "🔥 Firebase",
+      "🌬️ Tailwind CSS"
+    ],
     "role": "Frontend Developer",
     "duration": "6 Days",
     "live": "https://billease_tahreem.surge.sh/",
-    "code": "https://github.com/TahReEm7/bill-ease",
+    "frontend": "https://github.com/TahReEm7/bill-ease",
     "image": "https://i.ibb.co/nMXDpKBK/Screenshot-2025-06-28-030116.png"
   },
   {
@@ -65,12 +112,15 @@
       "Simple, distraction-free UI optimized for mobile and desktop.",
       "Content easily expandable for future lessons."
     ],
-    "tech": ["HTML", "Tailwind CSS", "JavaScript"],
+    "tech": [
+      "📄 HTML",
+      "🌬️ Tailwind CSS",
+      "✨ JavaScript"
+    ],
     "role": "Frontend Developer",
-    "duration": "2 months",
+    "duration": "4 Days",
     "live": "https://english-shikho.surge.sh/",
-    "code": "https://github.com/TahReEm7/english-shikho",
+    "frontend": "https://github.com/TahReEm7/english-shikho",
     "image": "https://i.ibb.co/v4hqD0Km/Screenshot-2025-06-28-025914.png"
   }
-
 ]
