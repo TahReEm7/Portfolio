@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
 import GlobalLoader from '../../Components/Loader/Loader';
+import ConstructionNotice from '../../Components/ConstructionNotice/ConstructionNotice';
 
 const HomeLayout = () => {
   const [loading, setLoading] = useState(true);
@@ -18,11 +19,14 @@ const HomeLayout = () => {
 
   return (
     <div >
-      <Navbar />
+      <ConstructionNotice></ConstructionNotice>
+     <div className='pt-14 md:pt-9'>
+       <Navbar />
       <main>
         {loading ? <GlobalLoader /> : <Outlet />}
       </main>
       <Footer />
+     </div>
     </div>
   );
 };

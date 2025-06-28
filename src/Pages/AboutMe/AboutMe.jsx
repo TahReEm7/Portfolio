@@ -55,7 +55,7 @@ const AboutMe = () => {
         className="text-center mt-10"
       >
         <a
-          href="/Tahreem Hossain-Resume.pdf"
+          href="/resume.pdf"
           download="Tahreem_Hossain_Resume"
           className="btn btn-primary btn-lg px-8 rounded-full gap-2"
         >
