@@ -1,13 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { FaExternalLinkAlt, FaGithub, FaEye } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-  const [filteredProjects, setFilteredProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Debounce search input to improve performance
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearch(searchInput);
+    }, 300);
+    return () => clearTimeout(handler);
+  }, [searchInput]);
 
   // Helper to strip emojis/special chars from tech string
   const stripTechName = (techStr) => {
@@ -17,9 +27,13 @@ const Projects = () => {
       .trim();
   };
 
+  // Fetch projects on mount
   useEffect(() => {
-    fetch("/projects.json")
-      .then((res) => res.json())
+    fetch("/projectsData.json")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch projects");
+        return res.json();
+      })
       .then((data) => {
         const updated = data.map((project) => {
           if (!project.frontend && project.code) {
@@ -28,31 +42,33 @@ const Projects = () => {
           return project;
         });
         setProjects(updated);
-        setFilteredProjects(updated);
+        setLoading(false);
       })
-      .catch((err) => console.error("Failed to fetch projects:", err));
+      .catch((err) => {
+        console.error("Failed to fetch projects:", err);
+        setError(err.message);
+        setLoading(false);
+      });
   }, []);
 
-  useEffect(() => {
-    if (!searchInput.trim()) {
-      setFilteredProjects(projects);
-      return;
+  // Filter projects based on debounced search input
+  const filteredProjects = useMemo(() => {
+    if (!debouncedSearch.trim()) {
+      return projects;
     }
 
-    const filters = searchInput
+    const filters = debouncedSearch
       .toLowerCase()
       .split(/[\s,]+/)
       .filter(Boolean);
 
-    const filtered = projects.filter((project) =>
+    return projects.filter((project) =>
       project.tech.some((tech) => {
         const cleanTech = stripTechName(tech);
         return filters.some((filter) => cleanTech.includes(filter));
       })
     );
-
-    setFilteredProjects(filtered);
-  }, [searchInput, projects]);
+  }, [debouncedSearch, projects]);
 
   return (
     <section id="projects" className="w-11/12 mx-auto py-10">
@@ -78,19 +94,24 @@ const Projects = () => {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           className="input input-bordered w-full"
+          aria-label="Search projects by technology"
         />
         <p className="mt-2 text-sm text-center text-base-content/70">
           Search by one or multiple tech keywords separated by space or comma.
         </p>
       </div>
 
-      <div className="grid gap-12 lg:grid-cols-2">
-        {filteredProjects.length === 0 ? (
-          <p className="col-span-full text-center text-lg text-base-content/60">
-            No projects found for the given tech keywords.
-          </p>
-        ) : (
-          filteredProjects.map((project, index) => (
+      {loading ? (
+        <p className="text-center">Loading projects...</p>
+      ) : error ? (
+        <p className="text-center text-red-500">Error: {error}</p>
+      ) : filteredProjects.length === 0 ? (
+        <p className="col-span-full text-center text-lg text-base-content/60">
+          No projects found for the given tech keywords.
+        </p>
+      ) : (
+        <div className="grid gap-12 lg:grid-cols-2">
+          {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
               className="relative group bg-base-100 rounded-2xl shadow-lg overflow-hidden border border-base-300"
@@ -136,6 +157,7 @@ const Projects = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-sm btn-primary rounded-full gap-2"
+                      aria-label={`Visit live site of ${project.title}`}
                     >
                       <FaExternalLinkAlt /> Live
                     </a>
@@ -147,6 +169,7 @@ const Projects = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-sm btn-outline rounded-full gap-2"
+                      aria-label={`View frontend code of ${project.title}`}
                     >
                       <FaGithub /> Frontend
                     </a>
@@ -158,6 +181,7 @@ const Projects = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-sm btn-outline rounded-full gap-2"
+                      aria-label={`View backend code of ${project.title}`}
                     >
                       <FaGithub /> Backend
                     </a>
@@ -166,15 +190,16 @@ const Projects = () => {
                   <Link
                     to={`/project/${project.id}`}
                     className="btn btn-sm btn-accent rounded-full gap-2"
+                    aria-label={`View details of ${project.title}`}
                   >
                     <FaEye /> View Details
                   </Link>
                 </div>
               </div>
             </motion.div>
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 };

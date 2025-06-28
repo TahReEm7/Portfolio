@@ -22,7 +22,7 @@ const ProjectDetails = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/projects.json")
+    fetch("/projectsData.json")
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((proj) => proj.id === id);
