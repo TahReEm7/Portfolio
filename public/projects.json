@@ -1,5 +1,5 @@
 [
-    {
+  {
     "id": "circleup",
     "title": "CircleUp",
     "brief": "Social networking platform for community engagement and connections.",
@@ -67,6 +67,38 @@
     "image": "https://i.ibb.co/hxfmv5tp/Screenshot-2025-06-28-025725.png"
   },
   {
+    "id": "portfolio",
+    "title": "Personal Portfolio",
+    "brief": "A sleek personal portfolio website showcasing projects, skills, and contact info.",
+    "description": "This portfolio website is built with React and Tailwind CSS to showcase my skills, projects, and professional background. It features smooth animations, responsive design, and easy navigation to provide visitors with a clear overview of my work and contact details.",
+    "challenges": [
+      "Implementing responsive design that works across all devices.",
+      "Adding smooth animations and transitions for enhanced UX using Framer Motion.",
+      "Organizing content in a clean and engaging way.",
+      "Optimizing performance and SEO with React Helmet."
+    ],
+    "features": [
+      "Showcases projects with detailed descriptions and links.",
+      "Responsive design with mobile-first approach.",
+      "Smooth entrance animations with Framer Motion.",
+      "Contact form integration for easy communication.",
+      "Dark/light theme toggle and social media links."
+    ],
+    "tech": [
+      "React",
+      "Tailwind CSS",
+      "Framer Motion",
+      "React Helmet",
+      "React Router"
+    ],
+    "role": "Frontend Developer",
+    "duration": "5 Days",
+    "live": "https://tahreem17.surge.sh/",
+    "frontend": "https://github.com/TahReEm7/Portfolio",
+    "backend": "",
+    "image": "https://i.ibb.co/zT0c9d7m/Screenshot-2025-06-28-173202.png"
+  },
+  {
     "id": "billease",
     "title": "BillEase",
     "brief": "Expense tracker app with Firebase auth and smart bill management.",
@@ -83,12 +115,7 @@
       "Dashboard displaying expense trends and stats with charts.",
       "Responsive design with smooth animations."
     ],
-    "tech": [
-      "⚛️ React",
-      "🛣️ React Router",
-      "🔥 Firebase",
-      "🌬️ Tailwind CSS"
-    ],
+    "tech": ["⚛️ React", "🛣️ React Router", "🔥 Firebase", "🌬️ Tailwind CSS"],
     "role": "Frontend Developer",
     "duration": "6 Days",
     "live": "https://billease_tahreem.surge.sh/",
@@ -112,11 +139,7 @@
       "Simple, distraction-free UI optimized for mobile and desktop.",
       "Content easily expandable for future lessons."
     ],
-    "tech": [
-      "📄 HTML",
-      "🌬️ Tailwind CSS",
-      "✨ JavaScript"
-    ],
+    "tech": ["📄 HTML", "🌬️ Tailwind CSS", "✨ JavaScript"],
     "role": "Frontend Developer",
     "duration": "4 Days",
     "live": "https://english-shikho.surge.sh/",

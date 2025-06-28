@@ -66,7 +66,7 @@ const Navbar = () => {
               setActiveSection("home");
               scrollToTop();
             }}
-            className="text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary cursor-pointer"
+            className="text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary cursor-pointer"
           >
             Tahreem
           </span>
@@ -167,7 +167,7 @@ const Navbar = () => {
               }}
               className="text-xl font-bold text-primary cursor-pointer"
             >
-              Tahreem.dev
+              Tahreem
             </span>
             <label
               htmlFor="nav-drawer"
