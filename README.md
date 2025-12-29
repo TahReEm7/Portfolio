@@ -1,6 +1,6 @@
 # Personal Portfolio
 
-#Live Link : (https://img.shields.io/badge/Live-Demo-blue?style=flat-square&logo=surge)](https://tahreem17.surge.sh/)
+#Live Link : (https://tahreem17.surge.sh/)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 A sleek and modern personal portfolio website built with React and Tailwind CSS to showcase my projects, skills, and contact information.
