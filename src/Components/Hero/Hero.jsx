@@ -27,17 +27,6 @@ const Hero = () => {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          {/* Status Tag */}
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-6 border border-primary/20"
-          >
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
-            <span>Available for New Opportunities</span>
-          </motion.div>
-
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
             Hi, I'm{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">
