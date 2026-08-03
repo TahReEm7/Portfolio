@@ -92,7 +92,7 @@ const Hero = () => {
 
             <div className="relative bg-base-200/80 backdrop-blur-md rounded-2xl p-4 border border-base-300 shadow-2xl">
               <img
-                src="https://www.altamira.ai/wp-content/uploads/2019/09/Full-Stack-DeveloperArtboard-1.png"
+                src="assets/web.webp"
                 alt="Tahreem Hossain - Full Stack Developer"
                 className="w-full h-auto rounded-xl transform hover:scale-[1.02] transition-transform duration-500 object-cover"
               />
