@@ -20,10 +20,10 @@ const Navbar = () => {
 
   useEffect(() => {
     if (location.pathname === "/") {
-      const sections = ["home", "about","skills","contact"];
+      const sections = ["home", "about", "skills", "experience", "projects", "education", "contact"];
 
       const handleScroll = () => {
-        const scrollPosition = window.scrollY + 60;
+        const scrollPosition = window.scrollY + 80;
 
         let current = "home";
         for (let i = 0; i < sections.length; i++) {
@@ -49,7 +49,7 @@ const Navbar = () => {
       return "hover:text-primary transition cursor-pointer";
     }
     return activeSection === section
-      ? "text-primary border-b-2 border-primary pb-1 cursor-pointer"
+      ? "text-primary border-b-2 border-primary pb-1 cursor-pointer font-semibold"
       : "hover:text-primary transition cursor-pointer";
   };
 
@@ -66,7 +66,7 @@ const Navbar = () => {
               setActiveSection("home");
               scrollToTop();
             }}
-            className="text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary cursor-pointer"
+            className="text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent cursor-pointer"
           >
             Tahreem
           </span>
@@ -96,7 +96,7 @@ const Navbar = () => {
               About
             </HashLink>
 
-              {/* skills */}
+            {/* skills */}
             <HashLink
               smooth
               to="/#skills"
@@ -107,12 +107,23 @@ const Navbar = () => {
               Skills
             </HashLink>
 
+            {/* Experience */}
+            <HashLink
+              smooth
+              to="/#experience"
+              scroll={scrollWithOffset}
+              onClick={() => setActiveSection("experience")}
+              className={linkClass("experience")}
+            >
+              Experience
+            </HashLink>
+
             {/* Projects */}
             <NavLink
               to="/projects"
               className={({ isActive }) =>
                 isActive
-                  ? "text-primary border-b-2 border-primary pb-1"
+                  ? "text-primary border-b-2 border-primary pb-1 font-semibold"
                   : "hover:text-primary transition"
               }
             >
@@ -205,17 +216,36 @@ const Navbar = () => {
               About
             </HashLink>
           </li>
-              <li>
-                <HashLink
+          <li>
+            <HashLink
               smooth
               to="/#skills"
               scroll={scrollWithOffset}
-              onClick={() => setActiveSection("skills")}
-              className={linkClass("skills")}
+              onClick={() => {
+                setActiveSection("skills");
+                document.getElementById("nav-drawer").checked = false;
+              }}
+              className="rounded hover:bg-base-300 cursor-pointer"
             >
               Skills
             </HashLink>
-              </li>
+          </li>
+
+          <li>
+            <HashLink
+              smooth
+              to="/#experience"
+              scroll={scrollWithOffset}
+              onClick={() => {
+                setActiveSection("experience");
+                document.getElementById("nav-drawer").checked = false;
+              }}
+              className="rounded hover:bg-base-300 cursor-pointer"
+            >
+              Experience
+            </HashLink>
+          </li>
+
           <li>
             <NavLink
               to="/projects"

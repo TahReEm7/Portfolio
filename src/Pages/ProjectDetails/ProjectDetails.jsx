@@ -1,6 +1,6 @@
-import { useParams, useNavigate } from "react-router";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { FaExternalLinkAlt, FaGithub, FaArrowLeft } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub, FaArrowLeft, FaCheckCircle, FaExclamationTriangle, FaCode, FaCalendarAlt, FaUserTag } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
 import GlobalLoader from "../../Components/Loader/Loader";
@@ -11,7 +11,7 @@ const fadeIn = {
   visible: (i = 1) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.2, duration: 0.6 },
+    transition: { delay: i * 0.15, duration: 0.5 },
   }),
 };
 
@@ -20,6 +20,7 @@ const ProjectDetails = () => {
   const navigate = useNavigate();
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
     fetch("/projectsData.json")
@@ -37,7 +38,7 @@ const ProjectDetails = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-pink-50 via-white to-sky-50">
+      <div className="flex justify-center items-center min-h-[70vh] bg-base-100">
         <GlobalLoader />
       </div>
     );
@@ -47,88 +48,99 @@ const ProjectDetails = () => {
 
   return (
     <motion.section
-      className="px-4 md:px-10 py-8 md:py-12 bg-base-100"
+      className="w-11/12 mx-auto px-4 md:px-8 py-8 md:py-16 bg-base-100 min-h-screen"
       initial="hidden"
       animate="visible"
       variants={fadeIn}
     >
       <Helmet>
-        <title>{project.title} || Tahreem</title>
+        <title>{project.title} Details || Tahreem</title>
       </Helmet>
 
+      {/* Back Button */}
       <button
         onClick={() => navigate(-1)}
-        className="btn btn-ghost text-primary flex items-center gap-2 mb-6"
+        className="btn btn-sm btn-ghost text-primary flex items-center gap-2 mb-8 hover:bg-base-200 rounded-full px-4"
       >
         <FaArrowLeft /> Back to Projects
       </button>
 
-      <motion.h1
-        className="text-4xl md:text-5xl font-extrabold text-primary mb-2"
-        custom={1}
-        variants={fadeIn}
-      >
-        {project.title}
-      </motion.h1>
+      {/* Header Info */}
+      <div className="mb-10">
+        <motion.h1
+          className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent mb-3"
+          custom={1}
+          variants={fadeIn}
+        >
+          {project.title}
+        </motion.h1>
 
-      <motion.p
-        className="text-lg italic text-base-content/70 mb-8"
-        custom={2}
-        variants={fadeIn}
-      >
-        {project.brief}
-      </motion.p>
+        <motion.p
+          className="text-lg md:text-xl text-base-content/80 max-w-3xl"
+          custom={2}
+          variants={fadeIn}
+        >
+          {project.brief}
+        </motion.p>
+      </div>
 
-      <div className="grid md:grid-cols-2 gap-10 p-6">
-        {/* LEFT */}
-        <div className="space-y-8">
+      <div className="grid lg:grid-cols-12 gap-10">
+        {/* LEFT COLUMN: Media & Links */}
+        <div className="lg:col-span-7 space-y-8">
+          {/* Main Image */}
           <motion.div
-            className="relative rounded-xl overflow-hidden shadow-md"
-            initial="hidden"
-            animate="visible"
+            className="relative rounded-2xl overflow-hidden border border-base-300 shadow-2xl bg-base-200"
             custom={3}
             variants={fadeIn}
           >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-64 md:h-80 object-cover rounded-lg"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+            {!imageError ? (
+              <img
+                src={project.image}
+                alt={project.title}
+                onError={() => setImageError(true)}
+                className="w-full h-auto max-h-[420px] object-cover object-top"
+              />
+            ) : (
+              <div className="w-full h-80 flex flex-col items-center justify-center bg-base-300 text-base-content/60">
+                <FaCode className="text-5xl text-primary mb-3" />
+                <span className="text-base font-semibold">{project.title}</span>
+              </div>
+            )}
           </motion.div>
 
-          <motion.section custom={4} variants={fadeIn}>
-            <h2 className="text-2xl font-semibold text-primary mb-2">Description</h2>
-            <p className="text-base md:text-lg text-base-content leading-relaxed">
+          {/* Description Section */}
+          <motion.div custom={4} variants={fadeIn} className="bg-base-200/70 p-6 md:p-8 rounded-2xl border border-base-300 shadow-md">
+            <h2 className="text-2xl font-bold text-primary mb-3">About The Project</h2>
+            <p className="text-base md:text-lg text-base-content/90 leading-relaxed">
               {project.description}
             </p>
-          </motion.section>
+          </motion.div>
 
-          {/* TECH STACK BELOW DESCRIPTION */}
-          <motion.section custom={5} variants={fadeIn}>
-            <h2 className="text-2xl font-semibold mb-3 text-primary">Tech Stack</h2>
-            <div className="flex flex-wrap gap-3">
+          {/* Tech Stack */}
+          <motion.div custom={5} variants={fadeIn} className="bg-base-200/70 p-6 md:p-8 rounded-2xl border border-base-300 shadow-md">
+            <h2 className="text-2xl font-bold text-primary mb-4">Technologies & Tools</h2>
+            <div className="flex flex-wrap gap-2.5">
               {project.tech.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-4 py-2 rounded-full bg-primary/10 text-primary font-medium shadow-sm"
+                  className="px-4 py-1.5 rounded-full bg-base-100 text-primary font-semibold text-sm border border-base-300 shadow-sm"
                 >
                   {tech}
                 </span>
               ))}
             </div>
-          </motion.section>
+          </motion.div>
 
-          <motion.div className="flex flex-wrap gap-4" custom={6} variants={fadeIn}>
+          {/* External Action Links */}
+          <motion.div className="flex flex-wrap gap-4 pt-2" custom={6} variants={fadeIn}>
             {project.live && (
               <a
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-primary btn-md gap-2"
+                className="btn btn-primary btn-lg rounded-full gap-2 px-8 shadow-lg hover:shadow-primary/30"
               >
-                <FaExternalLinkAlt /> Live Demo
+                <FaExternalLinkAlt /> Live Preview
               </a>
             )}
             {project.frontend && (
@@ -136,7 +148,7 @@ const ProjectDetails = () => {
                 href={project.frontend}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-outline btn-md gap-2"
+                className="btn btn-outline btn-lg rounded-full gap-2 px-6"
               >
                 <FaGithub /> Frontend Code
               </a>
@@ -146,7 +158,7 @@ const ProjectDetails = () => {
                 href={project.backend}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-outline btn-md gap-2"
+                className="btn btn-outline btn-lg rounded-full gap-2 px-6"
               >
                 <FaGithub /> Backend Code
               </a>
@@ -154,38 +166,63 @@ const ProjectDetails = () => {
           </motion.div>
         </div>
 
-        {/* RIGHT */}
-        <div className="space-y-8">
-          <motion.section custom={7} variants={fadeIn}>
-            <h2 className="text-2xl font-semibold mb-3 text-primary">Key Features</h2>
-            <ul className="list-disc list-inside space-y-2 text-base md:text-lg text-base-content">
-              {project.features.map((feature, idx) => (
-                <li key={idx}>{feature}</li>
-              ))}
-            </ul>
-          </motion.section>
+        {/* RIGHT COLUMN: Key Features, Challenges, Role */}
+        <div className="lg:col-span-5 space-y-8">
+          {/* Metadata Card */}
+          <motion.div
+            className="bg-base-200/80 p-6 rounded-2xl border border-base-300 shadow-md grid grid-cols-2 gap-4"
+            custom={7}
+            variants={fadeIn}
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                <FaUserTag />
+              </div>
+              <div>
+                <p className="text-xs text-base-content/60 font-semibold">Role</p>
+                <p className="text-sm font-bold text-base-content">{project.role || "Developer"}</p>
+              </div>
+            </div>
 
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
+                <FaCalendarAlt />
+              </div>
+              <div>
+                <p className="text-xs text-base-content/60 font-semibold">Duration</p>
+                <p className="text-sm font-bold text-base-content">{project.duration || "N/A"}</p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Features Section */}
+          <motion.div custom={8} variants={fadeIn} className="bg-base-200/70 p-6 md:p-8 rounded-2xl border border-base-300 shadow-md">
+            <h2 className="text-2xl font-bold text-primary mb-4">Key Features</h2>
+            <ul className="space-y-3">
+              {project.features &&
+                project.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-start gap-3 text-base-content/90 text-sm md:text-base">
+                    <FaCheckCircle className="text-primary mt-1 shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+            </ul>
+          </motion.div>
+
+          {/* Challenges Section */}
           {project.challenges?.length > 0 && (
-            <motion.section custom={8} variants={fadeIn}>
-              <h2 className="text-2xl font-semibold mb-3 text-primary">Challenges Faced</h2>
-              <ul className="list-disc list-inside space-y-2 text-base md:text-lg text-base-content">
+            <motion.div custom={9} variants={fadeIn} className="bg-base-200/70 p-6 md:p-8 rounded-2xl border border-base-300 shadow-md">
+              <h2 className="text-2xl font-bold text-secondary mb-4">Challenges & Solutions</h2>
+              <ul className="space-y-3">
                 {project.challenges.map((challenge, idx) => (
-                  <li key={idx}>{challenge}</li>
+                  <li key={idx} className="flex items-start gap-3 text-base-content/90 text-sm md:text-base">
+                    <FaExclamationTriangle className="text-amber-500 mt-1 shrink-0" />
+                    <span>{challenge}</span>
+                  </li>
                 ))}
               </ul>
-            </motion.section>
+            </motion.div>
           )}
-
-          <motion.section className="grid grid-cols-2 gap-4" custom={9} variants={fadeIn}>
-            <div>
-              <h3 className="font-semibold text-primary mb-1">Role</h3>
-              <p className="text-base-content">{project.role}</p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-primary mb-1">Duration</h3>
-              <p className="text-base-content">{project.duration}</p>
-            </div>
-          </motion.section>
         </div>
       </div>
     </motion.section>

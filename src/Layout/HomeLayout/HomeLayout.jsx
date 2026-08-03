@@ -25,7 +25,7 @@ const HomeLayout = () => {
       <main>
         {loading ? <GlobalLoader /> : <Outlet />}
       </main>
-      <Footer />
+      {!loading && <Footer />}
      </div>
     </div>
   );

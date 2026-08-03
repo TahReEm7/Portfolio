@@ -1,10 +1,12 @@
 import React from "react";
 import Hero from "../../Components/Hero/Hero";
 import AboutMe from "../AboutMe/AboutMe";
+import Skills from "../Skills/Skills";
+import Experience from "../Experience/Experience";
+import ProjectsSection from "../../Components/ProjectsSection/ProjectsSection";
 import Education from "../Education/Education";
 import Contact from "../Contact/Contact";
 import { Toaster } from "react-hot-toast";
-import Skills from "../Skills/Skills";
 import { Helmet } from "react-helmet";
 
 const Home = () => {
@@ -13,11 +15,13 @@ const Home = () => {
       <Helmet>
         <title>Home || Tahreem</title>
       </Helmet>
-      <Hero></Hero>
-      <AboutMe></AboutMe>
-      <Skills></Skills>
-      <Education></Education>
-      <Contact></Contact>
+      <Hero />
+      <AboutMe />
+      <Skills />
+      <Experience />
+      <ProjectsSection />
+      <Education />
+      <Contact />
       <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
